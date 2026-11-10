@@ -3,6 +3,8 @@
 Theme-aware steppers for multi-step flows in Flutter, with gorgeous
 defaults.
 
+![The strip: a card of dots, progress lines and labels, with one step completed, one current and three to come](screenshots/strip.png)
+
 A wizard needs one thing from its stepper: to show which steps are done,
 which is current and which are to come, at any width. `NiceStepper` does
 that from a list of steps and an index, and leaves the rest of the wizard
@@ -28,6 +30,12 @@ card that fills its width, and, below 560 px, a one-line bar with a
 "STEP 2 OF 4" counter and a progress track that opens the list of steps
 in a bottom sheet. Dark mode and brand colours come from
 `Theme.of(context)` with no setup.
+
+![The strip in dark mode, with numbered dots](screenshots/strip_dark.png)
+
+| The compact bar | The list of steps it opens |
+| :---: | :---: |
+| ![The compact bar at a phone's width: a counter and the step's name over a progress track](screenshots/compact.png) | ![The list of steps as a bottom sheet, with a custom theme in dark mode](screenshots/steps_sheet.png) |
 
 ## Features
 

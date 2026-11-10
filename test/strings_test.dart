@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nicestepper/nicestepper.dart';
+import 'package:nicesteps/nicesteps.dart';
 
 const _steps = [
   NiceStep(label: 'Société', icon: Icons.business_rounded),

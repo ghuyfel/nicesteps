@@ -1,5 +1,5 @@
-name: nicestepper_example
-description: Gallery app for nicestepper, theme-aware wizard steppers.
+name: nicesteps_example
+description: Gallery app for nicesteps, theme-aware wizard steppers.
 publish_to: 'none'
 version: 0.1.0
 
@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  nicestepper:
+  nicesteps:
     path: ../
 
 dev_dependencies:

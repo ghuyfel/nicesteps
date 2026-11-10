@@ -1,4 +1,4 @@
-# nicestepper
+# nicesteps
 
 Theme-aware steppers for multi-step flows in Flutter, with gorgeous
 defaults.
@@ -9,7 +9,7 @@ that from a list of steps and an index, and leaves the rest of the wizard
 to you: it holds no state and has no buttons.
 
 ```dart
-import 'package:nicestepper/nicestepper.dart';
+import 'package:nicesteps/nicesteps.dart';
 
 NiceStepper(
   steps: const [
@@ -67,7 +67,7 @@ in a bottom sheet. Dark mode and brand colours come from
 ## Installation
 
 ```bash
-flutter pub add nicestepper
+flutter pub add nicesteps
 ```
 
 Requires Flutter 3.27 or newer. No other dependencies.

@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nicestepper/nicestepper.dart';
-import 'package:nicestepper_example/main.dart';
+import 'package:nicesteps/nicesteps.dart';
+import 'package:nicesteps_example/main.dart';
 
 Future<void> loadRoboto() async {
   final flutterRoot = Platform.environment['FLUTTER_ROOT'] ??

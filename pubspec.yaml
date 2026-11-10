@@ -1,0 +1,27 @@
+name: nicestepper
+description: >-
+  Theme-aware wizard steppers for Flutter: a strip of dots and labels that
+  fills its width, a compact progress bar for phones, tap-to-go-back and
+  localisable text.
+version: 1.0.0
+repository: https://github.com/ghuyfel/nicestepper
+issue_tracker: https://github.com/ghuyfel/nicestepper/issues
+topics:
+  - stepper
+  - wizard
+  - progress
+  - ui
+  - widgets
+
+environment:
+  sdk: ^3.6.0
+  flutter: ">=3.27.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter

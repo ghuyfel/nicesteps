@@ -1,11 +1,11 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:nicestepper/nicestepper.dart';
+import 'package:nicesteps/nicesteps.dart';
 
 void main() => runApp(const GalleryApp());
 
-/// Gallery for nicestepper: one sign-up flow driven by Previous and Next,
+/// Gallery for nicesteps: one sign-up flow driven by Previous and Next,
 /// with switches for the stepper's form, its dots, its width and its theme.
 class GalleryApp extends StatefulWidget {
   const GalleryApp({super.key});
@@ -21,7 +21,7 @@ class _GalleryAppState extends State<GalleryApp> {
   Widget build(BuildContext context) {
     const seed = Color(0xFF06102A); // navy, matching the nicetables gallery
     return MaterialApp(
-      title: 'nicestepper gallery',
+      title: 'nicesteps gallery',
       debugShowCheckedModeBanner: false,
       themeMode: _mode,
       theme: ThemeData(
@@ -173,7 +173,7 @@ class _GalleryPageState extends State<GalleryPage> {
                 runSpacing: 8,
                 children: [
                   Text(
-                    'nicestepper',
+                    'nicesteps',
                     style: theme.textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.w700,
                       letterSpacing: -0.5,

@@ -1,6 +1,6 @@
 {
-    "name": "nicestepper_example",
-    "short_name": "nicestepper_example",
+    "name": "nicesteps_example",
+    "short_name": "nicesteps_example",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

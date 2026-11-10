@@ -62,50 +62,60 @@ Future<void> settle(WidgetTester tester) async {
   }
 }
 
-/// Renders the gallery to PNG files for visual checks.
+/// Shows the gallery, started afresh, in a [width] by [height] window at
+/// twice the pixels, inside a boundary around the whole app so the bottom
+/// sheet's route is in the picture too.
+Future<void> open(
+  WidgetTester tester,
+  String name,
+  double width,
+  double height,
+) async {
+  tester.view.devicePixelRatio = 2;
+  tester.view.physicalSize = Size(width * 2, height * 2);
+  addTearDown(tester.view.reset);
+  await tester.pumpWidget(
+    RepaintBoundary(child: GalleryApp(key: ValueKey(name))),
+  );
+  await settle(tester);
+}
+
+/// Renders the gallery to the PNG files the README and the package's
+/// pub.dev page show (`screenshots/` at the package root, listed in its
+/// `pubspec.yaml`).
 ///
 /// Opt in with `SNAP_DIR=<folder> flutter test test/screenshot_test.dart`
-/// (and `FLUTTER_ROOT` so real fonts load); it is skipped otherwise.
+/// (and `FLUTTER_ROOT` so real fonts load); it is skipped otherwise. From
+/// `example/`, `SNAP_DIR=../screenshots` rewrites the package's own.
 void main() {
   final snapDir = Platform.environment['SNAP_DIR'];
   testWidgets('render the gallery', skip: snapDir == null, (tester) async {
     await tester.runAsync(loadRoboto);
-    for (final (dpr, w, h, label) in [
-      (1.0, 1100.0, 640.0, 'desktop'),
-      (2.0, 390.0, 700.0, 'phone'),
-    ]) {
-      tester.view.devicePixelRatio = dpr;
-      tester.view.physicalSize = Size(w * dpr, h * dpr);
-      addTearDown(tester.view.reset);
-      // A boundary around the whole app, so the bottom sheet's route is
-      // in the picture too.
-      await tester.pumpWidget(
-        RepaintBoundary(child: GalleryApp(key: ValueKey(label))),
-      );
-      await settle(tester);
-      await snap(tester, '${label}_light');
 
-      // Numbers instead of icons, one step further.
-      await tester.tap(find.widgetWithText(FilterChip, 'Icons'));
-      await tester.tap(find.text('Next'));
-      await settle(tester);
-      await snap(tester, '${label}_numbers');
+    // The strip, as the gallery opens: icons, the second step current.
+    await open(tester, 'desktop', 1100, 660);
+    expect(find.byType(NiceStepStrip), findsOneWidget);
+    await snap(tester, 'strip');
 
-      // The brand theme, in dark mode.
-      await tester.tap(find.widgetWithText(FilterChip, 'Icons'));
-      await tester.tap(find.widgetWithText(FilterChip, 'Brand theme'));
-      await tester.tap(find.byTooltip('Toggle dark mode'));
-      await settle(tester);
-      await snap(tester, '${label}_dark_brand');
+    // The same in dark mode, with numbers and one step further.
+    await tester.tap(find.widgetWithText(FilterChip, 'Icons'));
+    await tester.tap(find.text('Next'));
+    await tester.tap(find.byTooltip('Toggle dark mode'));
+    await settle(tester);
+    await snap(tester, 'strip_dark');
 
-      // The list of steps, where the compact bar is showing.
-      if (find.byType(NiceStepBar).evaluate().isNotEmpty) {
-        await tester.tap(find.byType(NiceStepBar));
-        await settle(tester);
-        await snap(tester, '${label}_sheet');
-        await tester.tapAt(const Offset(10, 10));
-        await settle(tester);
-      }
-    }
+    // The compact bar, at a phone's width.
+    await open(tester, 'phone', 390, 700);
+    expect(find.byType(NiceStepBar), findsOneWidget);
+    await snap(tester, 'compact');
+
+    // The list of steps it opens, with the brand theme in dark mode.
+    await tester.tap(find.widgetWithText(FilterChip, 'Brand theme'));
+    await tester.tap(find.byTooltip('Toggle dark mode'));
+    await settle(tester);
+    await tester.tap(find.byType(NiceStepBar));
+    await settle(tester);
+    expect(find.byType(NiceStepsSheet), findsOneWidget);
+    await snap(tester, 'steps_sheet');
   });
 }

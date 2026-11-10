@@ -1,3 +1,9 @@
+## 1.0.1
+
+- Screenshots of the strip, the compact bar and the list of steps it
+  opens, in the README and on the package's pub.dev page. No change to
+  the code.
+
 ## 1.0.0
 
 First stable release.

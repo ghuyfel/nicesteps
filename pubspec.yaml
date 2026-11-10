@@ -3,7 +3,7 @@ description: >-
   Theme-aware wizard steppers for Flutter: a strip of dots and labels that
   fills its width, a compact progress bar for phones, tap-to-go-back and
   localisable text.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/ghuyfel/nicesteps
 issue_tracker: https://github.com/ghuyfel/nicesteps/issues
 topics:
@@ -12,6 +12,15 @@ topics:
   - progress
   - ui
   - widgets
+screenshots:
+  - description: The strip, with one step completed, one current and three to come.
+    path: screenshots/strip.png
+  - description: The strip in dark mode, with numbered dots.
+    path: screenshots/strip_dark.png
+  - description: The compact bar at a phone's width, a counter and a name over a progress track.
+    path: screenshots/compact.png
+  - description: The list of steps the compact bar opens, with a custom theme in dark mode.
+    path: screenshots/steps_sheet.png
 
 environment:
   sdk: ^3.6.0
